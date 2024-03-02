@@ -1,7 +1,7 @@
 Feature: Webdriveruniversity - 'Contact us' page
 
     Feature Description
-    Scenario: Submit valid form
+    Scenario: Valid form submission
         Given I am on the 'Contact us' page
         When I type in my first name
         And I type in my last name
