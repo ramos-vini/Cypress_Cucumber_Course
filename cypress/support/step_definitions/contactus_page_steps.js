@@ -26,7 +26,11 @@ When(`I submit the form`, () => {
     cy.get('input[type="submit"]').click();
 }) 
 
-Then(`I should see the message 'Thank You for your Message!'`, () => {
+Then(`I should see a success message`, () => {
     cy.contains('Thank You for your Message!');
     // cy.get('h1').should('have.text', 'Thank You for your Message!'); // Exact assertion
+})
+
+Then(`I should see an invalid email address error message`, () => {
+    cy.contains('Error: Invalid email address');
 }) 
