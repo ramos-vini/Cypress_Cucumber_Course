@@ -10,23 +10,43 @@ When(`I type in my first name`, () => {
     cy.get('[name="first_name"]').click().type('Vinicius');
 })
 
+When(`I type in {string} as first name`, (first_name) => {
+    cy.get('[name="first_name"]').click().type(first_name);
+})
+
 When(`I type in my last name`, () => {
     cy.get('[name="last_name"]').click().type('Ramos');
+})
+
+When(`I type in {string} as last name`, (last_name) => {
+    cy.get('[name="last_name"]').click().type(last_name);
 })
 
 When(`I type in my email address`, () => {
     cy.get('[name="email"]').click().type('viniciusramos@email.com');
 })
 
+When(`I type in {string} as email address`, (email) => {
+    cy.get('[name="email"]').click().type(email);
+})
+
 When(`I type in a comment`, () => {
     cy.get('textarea[name="message"]').click().type('My comment here.');
+}) 
+
+When(`I type in {string} and {int} as comment`, (string_msg, int_msg) => {
+    cy.get('textarea[name="message"]').click().type(`string: "${string_msg}", int: ${int_msg}`);
 }) 
 
 When(`I submit the form`, () => {
     cy.get('input[type="submit"]').click();
 }) 
 
-Then(`I should see the message 'Thank You for your Message!'`, () => {
+Then(`I should see a success message`, () => {
     cy.contains('Thank You for your Message!');
     // cy.get('h1').should('have.text', 'Thank You for your Message!'); // Exact assertion
+})
+
+Then(`I should see an invalid email address error message`, () => {
+    cy.contains('Error: Invalid email address');
 }) 
