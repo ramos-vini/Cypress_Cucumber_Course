@@ -11,7 +11,7 @@ When(`I type in my first name`, () => {
 })
 
 When(`I type in {string} as first name`, (first_name) => {
-    
+    cy.get('[name="first_name"]').click().type(first_name);
 })
 
 When(`I type in my last name`, () => {
@@ -19,7 +19,7 @@ When(`I type in my last name`, () => {
 })
 
 When(`I type in {string} as last name`, (last_name) => {
-    
+    cy.get('[name="last_name"]').click().type(last_name);
 })
 
 When(`I type in my email address`, () => {
@@ -27,15 +27,15 @@ When(`I type in my email address`, () => {
 })
 
 When(`I type in {string} as email address`, (email) => {
-    
+    cy.get('[name="email"]').click().type(email);
 })
 
 When(`I type in a comment`, () => {
     cy.get('textarea[name="message"]').click().type('My comment here.');
 }) 
 
-When(`I type in {string} and {int} as comment`, (string_message, int_message) => {
-    
+When(`I type in {string} and {int} as comment`, (string_msg, int_msg) => {
+    cy.get('textarea[name="message"]').click().type(`string: "${string_msg}", int: ${int_msg}`);
 }) 
 
 When(`I submit the form`, () => {
