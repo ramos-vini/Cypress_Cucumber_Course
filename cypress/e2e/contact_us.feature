@@ -1,28 +1,33 @@
-Feature: Webdriveruniversity - 'Contact us' page
+Feature: Webdriveruniversity - Contact Us page
 
-    Scenario: Valid form submission
-        Given I am on the 'Contact us' page
-        When I type in my first name
-        And I type in my last name
-        And I type in my email address
-        And I type in a comment
-        And I submit the form
-        Then I should see a success message
+    # Scenario: Valid form submission
+    #     Given I am on the Contact Us page
+    #     When I type in 'Vinicius' as first name
+    #     And I type in 'Ramos' as last name
+    #     And I type in 'viniciusramos@email.com' as email address
+    #     And I type in 'Hello World' as comment
+    #     And I submit the form
+    #     Then I should see a success message
 
-    Scenario: Valid form submission - specific inputs
-        Given I am on the 'Contact us' page
-        When I type in 'Vinicius' as first name
-        And I type in 'Ramos' as last name
-        And I type in 'viniciusramos@email.com' as email address
-        And I type in 'Hello World' and 0 as comment
-        And I submit the form
-        Then I should see a success message
+    # Scenario: Invalid form submission
+    #     Given I am on the Contact Us page
+    #     When I type in 'Vinicius' as first name
+    #     And I type in 'Ramos' as last name
+    #     # (No email address entered)
+    #     And I type in 'Hello World' as comment
+    #     And I submit the form
+    #     Then I should see an invalid email address error message
 
-    Scenario: Invalid form submission
-        Given I am on the 'Contact us' page
-        When I type in my first name
-        And I type in my last name
-        # (No email address entered)
-        And I type in a comment
+    Scenario Outline: Form submission
+        Given I am on the Contact Us page
+        When I type in '<firstName>' as first name
+        And I type in '<lastName>' as last name
+        And I type in '<email>' as email address
+        And I type in '<comment>' as comment
         And I submit the form
-        Then I should see an invalid email address error message
+        Then I should see the message '<message>'
+
+        Examples:
+            | firstName | lastName | email                    | comment                      | message                      |
+            | Vinicius  | Ramos    | vinicius_ramos@email.com | This is a valid scenario.    | Thank You for your Message!  |
+            | Vinicius  | Ramos    | vinicius_ramos           | This is an invalid scenario. | Error: Invalid email address |
