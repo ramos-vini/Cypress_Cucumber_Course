@@ -1,6 +1,7 @@
 const { Given, When, Then} = require("@badeball/cypress-cucumber-preprocessor");
 
 baseUrl = "https://www.webdriveruniversity.com/Login-Portal/index.html";
+let alertPopupStub;
 
 Given("I am on the Login page", () => {
   cy.visit(baseUrl);
@@ -14,20 +15,18 @@ When("I type in {string} as password", (password) => {
   cy.get("form input#password").click().type(password);
 });
 
-When("I click on the Login button with {string} credentials", (status) => {
-  // Event listener for the alert popup message
-  cy.on("window:alert", (message) => {
-    if (status == "valid") {
-      expect(message).to.equal("validation succeeded");
-    } else {
-      expect(message).to.equal("validation failed");
-    }
-  });
-
+When("I click on the Login button", (status) => {
+  alertPopupStub = cy.stub();
+  // Event listener assigns the callback function to our stub
+  cy.on("window:alert", alertPopupStub);
   cy.get("form #login-button").click();
 });
 
-Then("I should see a validation alert", () => {
-  // This step is only for a clear steps sequence on the feature file
-  // It is implemented on the previous step 'When I click on the Login button'
+Then("I should see a validation alert with {string} status", (status) => {
+    if(status == 'valid'){
+        expect(alertPopupStub).to.have.been.calledWith('validation succeeded');
+    }
+    else {
+        expect(alertPopupStub).to.have.been.calledWith('validation failed');
+    }
 });
