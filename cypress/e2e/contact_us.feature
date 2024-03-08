@@ -1,7 +1,9 @@
 Feature: Webdriveruniversity - Contact Us page
 
+    Background: I am on the Contact Us page
+        Given I am on the Contact Us page
+
     # Scenario: Valid form submission
-    #     Given I am on the Contact Us page
     #     When I type in 'Vinicius' as first name
     #     And I type in 'Ramos' as last name
     #     And I type in 'viniciusramos@email.com' as email address
@@ -10,7 +12,6 @@ Feature: Webdriveruniversity - Contact Us page
     #     Then I should see a success message
 
     # Scenario: Invalid form submission
-    #     Given I am on the Contact Us page
     #     When I type in 'Vinicius' as first name
     #     And I type in 'Ramos' as last name
     #     # (No email address entered)
@@ -19,7 +20,6 @@ Feature: Webdriveruniversity - Contact Us page
     #     Then I should see an invalid email address error message
 
     Scenario Outline: Form submission
-        Given I am on the Contact Us page
         When I type in '<firstName>' as first name
         And I type in '<lastName>' as last name
         And I type in '<email>' as email address
