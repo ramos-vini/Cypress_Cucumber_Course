@@ -4,7 +4,9 @@
   "description": "Cypress with Cucumber BDD",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "full-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
+    "smoke-headed-chrome": "cypress run -e TAGS='@smoke' --headed --browser chrome"
   },
   "author": "Vinicius Ramos",
   "license": "ISC",
