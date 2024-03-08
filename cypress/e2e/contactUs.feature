@@ -1,3 +1,4 @@
+@regression @contactUs
 Feature: Webdriveruniversity - Contact Us
 
     Background: I am on the Contact Us page
