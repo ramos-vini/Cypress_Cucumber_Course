@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "full-regression-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature'",
-    "smoke-headed-chrome": "cypress run -e TAGS='@smoke' --headed --browser chrome"
+    "smoke-headed-chrome": "cypress run -e TAGS='@smoke' --headed --browser chrome",
+    "smoke-headless-chrome": "cypress run -e TAGS='@smoke' --browser chrome"
   },
   "author": "Vinicius Ramos",
   "license": "ISC",
@@ -18,6 +19,14 @@
     "typescript": "^5.3.3"
   },
   "cypress-cucumber-preprocessor": {
-    "stepDefinitions": "cypress/support/step_definitions/**/*.js"
+    "stepDefinitions": "cypress/support/step_definitions/**/*.js",
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-html/cucumber-report.html"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-ndjson/cucumber-report.ndjson"
+    }
   }
 }
