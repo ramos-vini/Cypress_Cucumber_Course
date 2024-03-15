@@ -1,9 +1,10 @@
 import { Given, When, Then} from "@badeball/cypress-cucumber-preprocessor";
+import BasePage from "../pages/basePage";
 
-const baseUrl = 'https://www.webdriveruniversity.com/Contact-Us/contactus.html'
+const basePage = new BasePage();
 
 Given(`I am on the Contact Us page`, () => {
-    cy.visit(baseUrl);
+    basePage.navigateTo('/Contact-Us/contactus.html');
 })
 
 When(`I type in {string} as first name`, (first_name) => {

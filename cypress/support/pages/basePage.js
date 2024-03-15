@@ -1,4 +1,4 @@
-class basePage {
+class BasePage {
 
     navigateTo(path){
         cy.fixture('config.json').then((data) => {
@@ -11,4 +11,4 @@ class basePage {
     }
 }
 
-export default basePage;
+export default BasePage;

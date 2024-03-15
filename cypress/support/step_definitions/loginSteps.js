@@ -1,10 +1,12 @@
 const { Given, When, Then} = require("@badeball/cypress-cucumber-preprocessor");
+import BasePage from "../pages/basePage";
 
-baseUrl = "https://www.webdriveruniversity.com/Login-Portal/index.html";
+const basePage = new BasePage();
+
 let alertPopupStub;
 
 Given("I am on the Login page", () => {
-  cy.visit(baseUrl);
+  basePage.navigateTo('/Login-Portal/index.html');
 });
 
 When("I type in {string} as username", (username) => {
